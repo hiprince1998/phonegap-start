@@ -27,6 +27,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+		document.getElementById('btncalculate').addEventListener('click',this.onCalculate,false);
     },
     // deviceready Event Handler
     //
@@ -46,4 +47,19 @@ var app = {
 
         console.log('Received Event: ' + id);
     }
+	onCalculate:function(){
+		var b = document.getElementById('leng').value;
+		var h =document.getElementById('bred').value;
+		if(b.length==0||h.length==0)
+			document.getElementById('res').innerHTML="error: please fill all the field";
+		else if(b==0||h==0)
+			document.getElementById('res').innerHTML="error please enter valid values.";
+		else
+		{
+			var x=parseInt(b);
+			var y=parseInt(h);
+			var area=x*y;
+			document.getElementById('res').innerHTML="area =" + area;
+		}
+	}
 };
